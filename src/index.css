@@ -1,3 +1,152 @@
 @import "tailwindcss";
 
 html, body, #root { height: 100%; }
+
+
+/* --- Scientific backdrop (subtle grid) --- */
+.bg-lab {
+    background:
+      radial-gradient(ellipse at top, rgba(15,23,42,0.92), rgba(2,6,23,1)),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.04) 0px,
+        rgba(255,255,255,0.04) 1px,
+        transparent 1px,
+        transparent 24px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.04) 0px,
+        rgba(255,255,255,0.04) 1px,
+        transparent 1px,
+        transparent 24px
+      );
+    background-blend-mode: overlay, normal, normal;
+  }
+  
+  /* --- Wide container that actually centers and uses screen width --- */
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1600px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* --- Reusable cards / shells --- */
+  .card {
+    border: 1px solid rgba(255,255,255,0.12);
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    backdrop-filter: blur(6px);
+    border-radius: 16px;
+    padding: 16px;
+  }
+  
+  .mini-card {
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    padding: 12px;
+  }
+  
+  .canvas-shell {
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  }
+  
+  /* --- Micro components --- */
+  .section-title {
+    color: #e5e7eb;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+  
+  .label { color: #cbd5e1; }
+  .value { color: #f8fafc; font-weight: 500; }
+  .sep { opacity: 0.7; margin: 0 6px; }
+  .footnote { font-size: 11px; color: #94a3b8; margin-top: 8px; }
+  
+  /* Buttons / selects */
+  .btn {
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.08);
+    transition: background 120ms ease, border-color 120ms ease;
+  }
+  .btn:hover { background: rgba(255,255,255,0.16); }
+  .btn:focus { outline: none; box-shadow: 0 0 0 2px rgba(255,255,255,0.25); }
+  
+  .sel {
+    padding: 6px 8px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  
+  /* Checklines */
+  .check { display: inline-flex; align-items: center; gap: 6px; }
+  
+  /* Keyboard badge */
+  kbd {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-bottom-width: 2px;
+    border-radius: 6px;
+    padding: 1px 5px;
+    font-size: 11px;
+  }
+  
+
+  /* --- Force all "black-ish" text to silver grey --------------------------- */
+:root { --silver-grey: #cbd5e1; } /* slate-300ish; tweak if you want lighter/darker */
+
+/* Default text color everywhere */
+html, body { color: var(--silver-grey); }
+
+/* Common elements (inherit if possible) */
+h1, h2, h3, h4, h5, h6,
+p, span, small, strong, em, kbd,
+label, button, a, li, dt, dd,
+input, select, textarea {
+  color: var(--silver-grey);
+}
+
+/* Tailwind dark text utility overrides */
+.text-black,
+.text-slate-900, .text-slate-800, .text-slate-700,
+.text-gray-900,  .text-gray-800,  .text-gray-700,
+.text-neutral-900, .text-neutral-800, .text-neutral-700,
+.text-zinc-900,  .text-zinc-800,  .text-zinc-700 {
+  color: var(--silver-grey) !important;
+}
+
+/* Recharts SVG labels & ticks */
+.recharts-text, .recharts-default-tooltip, .recharts-tooltip-label {
+  fill: var(--silver-grey) !important;
+  color: var(--silver-grey) !important;
+}
+
+/* Buttons/inputs that might ship with default black text */
+button, .btn, .sel {
+  color: var(--silver-grey);
+}
+
+/* Any leftover inline <svg> text (defensive) */
+svg text { fill: var(--silver-grey); }
+
+/* Optional: Make <kbd> text match too */
+kbd { color: var(--silver-grey); }
+
+/* Ensure containers really use the width and center */
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1600px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
